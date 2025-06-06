@@ -28,20 +28,17 @@
             flex-direction: column;
             min-height: 100vh;
             line-height: 1.6;
-            border: 15px solid var(--primary-color);
             box-sizing: border-box;
         }
         
         header {
-            background: linear-gradient(rgba(78, 0, 0, 0.7), rgba(78, 0, 0, 0.7)), 
-                        url('images/header-bg.jpg') center/cover no-repeat;
+            background: url('images/header-bg.jpg') center/cover no-repeat;
             color: var(--light-text);
             padding: 4rem 1rem;
             text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             position: relative;
             z-index: 10;
-            margin: -15px -15px 0 -15px;
             min-height: 300px;
             display: flex;
             align-items: center;
@@ -51,6 +48,9 @@
         .header-content {
             max-width: 800px;
             margin: 0 auto;
+            background-color: rgba(78, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
         }
         
         header h1 {
@@ -58,6 +58,8 @@
             margin: 0 0 1rem 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             color: #fff;
+            font-family: 'B Titr', 'B Nazanin', Tahoma, sans-serif;
+            font-weight: bold;
         }
         
         header p {
@@ -74,7 +76,6 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 0 -15px;
         }
         
         nav a {
@@ -180,7 +181,7 @@
             flex-wrap: wrap;
             gap: 1.5rem;
             margin-top: 2rem;
-             width: 85%;
+            width: 85%;
         }
         
         .service-box {
@@ -254,12 +255,18 @@
         .rating-stars {
             font-size: 2rem;
             margin: 1rem 0;
-            color: gold;
+            color: #ccc;
         }
         
         .rating-stars span {
             cursor: pointer;
             margin: 0 5px;
+            transition: color 0.2s;
+        }
+        
+        .rating-stars span:hover,
+        .rating-stars span.active {
+            color: gold;
         }
         
         .feedback-form {
@@ -274,6 +281,7 @@
             margin-bottom: 1rem;
             resize: vertical;
             min-height: 100px;
+            font-family: Tahoma, Arial, sans-serif;
         }
         
         .feedback-form button {
@@ -291,6 +299,81 @@
             background-color: var(--highlight-color);
         }
         
+        .feedback-list {
+            margin-top: 2rem;
+            text-align: right;
+        }
+        
+        .feedback-item {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            border-right: 3px solid var(--primary-color);
+        }
+        
+        .feedback-rating {
+            color: gold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feedback-text {
+            margin-bottom: 0.5rem;
+        }
+        
+        .feedback-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .telegram-support {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #0088cc;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-support:hover {
+            background-color: #0077b5;
+            transform: translateY(-3px);
+        }
+        
+        .telegram-icon {
+            width: 30px;
+            height: 30px;
+            margin-left: 8px;
+        }
+        
+        .support-text {
+            display: none;
+            white-space: nowrap;
+            margin-right: 5px;
+        }
+        
         footer {
             background-color: var(--primary-color);
             color: var(--light-text);
@@ -298,7 +381,6 @@
             padding: 1.5rem;
             margin-top: auto;
             font-size: 1rem;
-            margin: 0 -15px -15px -15px;
         }
         
         .social-link {
@@ -331,19 +413,28 @@
             to { opacity: 1; }
         }
         
-        @media (max-width: 768px) {
-            body {
-                border-width: 8px;
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateX(100px);
             }
-            
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
             header {
-                margin: -8px -8px 0 -8px;
                 padding: 3rem 1rem;
                 min-height: 250px;
             }
             
+            .header-content {
+                padding: 1.5rem;
+            }
+            
             nav {
-                margin: 0 -8px;
                 flex-wrap: wrap;
             }
             
@@ -353,10 +444,6 @@
                 flex: 1 1 auto;
                 text-align: center;
                 margin: 3px;
-            }
-            
-            footer {
-                margin: 0 -8px -8px -8px;
             }
             
             header h1 {
@@ -387,29 +474,35 @@
             .gallery img {
                 max-height: 180px;
             }
+            
+            .telegram-support {
+                bottom: 15px;
+                left: 15px;
+            }
         }
         
         @media (max-width: 480px) {
-            body {
-                border-width: 5px;
-            }
-            
             header {
-                margin: -5px -5px 0 -5px;
                 padding: 2rem 1rem;
                 min-height: 200px;
             }
             
-            nav {
-                margin: 0 -5px;
-            }
-            
-            footer {
-                margin: 0 -5px -5px -5px;
+            .header-content {
+                padding: 1rem;
             }
             
             .gallery img {
                 max-height: 150px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .telegram-support {
+                bottom: 10px;
+                left: 10px;
+                padding: 8px 12px;
             }
         }
     </style>
@@ -554,8 +647,22 @@
                 <textarea id="feedback-text" placeholder="نظرات، پیشنهادات و انتقادات خود را اینجا بنویسید..."></textarea>
                 <button onclick="submitFeedback()">ارسال نظر</button>
             </div>
+            
+            <div class="feedback-list" id="feedback-list">
+                <!-- نظرات نمایش داده می‌شوند -->
+            </div>
         </div>
     </div>
+</div>
+
+<!-- دکمه پشتیبانی تلگرام -->
+<a href="https://t.me/soleymani_1423" class="telegram-support" target="_blank" id="telegramSupport">
+    <span class="support-text">برای پشتیبانی کلیک کنید</span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram" class="telegram-icon">
+</a>
+
+<div class="notification" id="notification">
+    نظر جدیدی دریافت شد!
 </div>
 
 <footer>
@@ -563,6 +670,7 @@
 </footer>
 
 <script>
+    // نمایش بخش‌های مختلف
     function showSection(sectionId) {
         const sections = document.querySelectorAll('.content');
         sections.forEach(sec => sec.classList.remove('active'));
@@ -574,30 +682,117 @@
         });
     }
 
+    // مدیریت امتیازدهی
     let currentRating = 0;
+    let feedbacks = [];
     
     function rate(stars) {
         currentRating = stars;
         const starElements = document.querySelectorAll('.rating-stars span');
         starElements.forEach((star, index) => {
-            star.style.color = index < stars ? 'gold' : '#ccc';
+            if (index < stars) {
+                star.classList.add('active');
+            } else {
+                star.classList.remove('active');
+            }
         });
     }
     
+    // ارسال نظر
     function submitFeedback() {
         const feedbackText = document.getElementById('feedback-text').value;
+        
         if (!feedbackText && currentRating === 0) {
             alert('لطفاً امتیاز دهید یا نظر خود را بنویسید');
             return;
         }
         
-        const subject = `نظر و پیشنهاد مشتری (امتیاز: ${currentRating}/5)`;
-        const body = `نظر مشتری:\n${feedbackText}\n\nامتیاز: ${currentRating} ستاره`;
+        // ایجاد نظر جدید
+        const newFeedback = {
+            rating: currentRating,
+            text: feedbackText,
+            date: new Date().toLocaleDateString('fa-IR')
+        };
         
-        window.location.href = `mailto:danyalsoleymani23@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        // ذخیره نظر در آرایه
+        feedbacks.push(newFeedback);
         
-        alert('با تشکر از نظر شما! پنجره ایمیل برای ارسال باز خواهد شد.');
+        // نمایش نظر جدید در لیست
+        displayFeedbacks();
+        
+        // نمایش اعلان
+        showNotification('نظر جدید با موفقیت ثبت شد!');
+        
+        // ریست فرم
+        document.getElementById('feedback-text').value = '';
+        currentRating = 0;
+        const starElements = document.querySelectorAll('.rating-stars span');
+        starElements.forEach(star => star.classList.remove('active'));
     }
+    
+    // نمایش نظرات
+    function displayFeedbacks() {
+        const feedbackList = document.getElementById('feedback-list');
+        feedbackList.innerHTML = '';
+        
+        if (feedbacks.length === 0) {
+            feedbackList.innerHTML = '<p>هنوز نظری ثبت نشده است.</p>';
+            return;
+        }
+        
+        feedbacks.forEach(feedback => {
+            const feedbackItem = document.createElement('div');
+            feedbackItem.className = 'feedback-item';
+            
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                stars += i < feedback.rating ? '★' : '☆';
+            }
+            
+            feedbackItem.innerHTML = `
+                <div class="feedback-rating">${stars}</div>
+                <div class="feedback-text">${feedback.text}</div>
+                <div class="feedback-date">${feedback.date}</div>
+            `;
+            
+            feedbackList.prepend(feedbackItem);
+        });
+    }
+    
+    // نمایش اعلان
+    function showNotification(message) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.style.display = 'block';
+        
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+    
+    // مدیریت دکمه تلگرام
+    const telegramSupport = document.getElementById('telegramSupport');
+    let timeoutId;
+    
+    telegramSupport.addEventListener('mouseenter', function() {
+        const supportText = this.querySelector('.support-text');
+        supportText.style.display = 'inline';
+        
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            supportText.style.display = 'none';
+        }, 2000);
+    });
+    
+    telegramSupport.addEventListener('mouseleave', function() {
+        const supportText = this.querySelector('.support-text');
+        supportText.style.display = 'none';
+    });
+    
+    // بارگذاری اولیه
+    document.addEventListener('DOMContentLoaded', function() {
+        displayFeedbacks();
+    });
 </script>
 
 </body>
