@@ -46,33 +46,21 @@
         }
         
         /* صفحه بارگذاری */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--primary-color);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        <!DOCTYPE html>
+        body {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
         }
         
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--light-text);
-            animation: spin 1s ease-in-out infinite;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
+        /* بقیه استایلهای شما... */
+        :root {
+            --primary-color: #1a365d;
         /* هدر */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
